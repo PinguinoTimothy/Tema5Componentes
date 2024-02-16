@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pruebas", "Pruebas\Pruebas.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paint", "Paint\Paint.csproj", "{00FF4B97-869C-4E9C-A2AB-B94B3A4D2588}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graficos", "Graficos\Graficos.csproj", "{AF3E1252-AF9D-4D3B-BACC-B1A34909DE4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{00FF4B97-869C-4E9C-A2AB-B94B3A4D2588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00FF4B97-869C-4E9C-A2AB-B94B3A4D2588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00FF4B97-869C-4E9C-A2AB-B94B3A4D2588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF3E1252-AF9D-4D3B-BACC-B1A34909DE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF3E1252-AF9D-4D3B-BACC-B1A34909DE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF3E1252-AF9D-4D3B-BACC-B1A34909DE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF3E1252-AF9D-4D3B-BACC-B1A34909DE4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

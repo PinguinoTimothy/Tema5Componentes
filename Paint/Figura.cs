@@ -18,7 +18,7 @@ namespace Paint
 
     internal class Figura
     {
-     
+
 
         private tipoFigura tipo;
         private int width;
@@ -31,7 +31,7 @@ namespace Paint
         public Figura()
         {
         }
-       private Random rand = new Random();
+        private Random rand = new Random();
 
 
         public Figura(tipoFigura tipo, int width, int height, int x, int y, Color color)
@@ -42,7 +42,7 @@ namespace Paint
             X = x;
             Y = y;
             Color = color;
-            rand.Next(X, X + Width);
+            aleatorio = rand.Next(X, X + Width);
         }
 
         internal tipoFigura Tipo
@@ -80,7 +80,7 @@ namespace Paint
         {
             get => aleatorio;
         }
-        
-        
+
+
     }
 }

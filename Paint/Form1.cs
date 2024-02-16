@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,19 +21,22 @@ namespace Paint
 
         private List<Figura> figuras = new List<Figura>();
         private Random rand = new Random();
+        public Color colorFondo = Color.White;
+        public float grosorPincel = 2;
+
 
         public void generarFigura(tipoFigura tipo)
         {
-            
+
 
             int x = rand.Next(0, pictureBox1.Width);
             int y = rand.Next(0, pictureBox1.Height);
 
-            int width = rand.Next(0, pictureBox1.Width-x);
-            int height = rand.Next(0, pictureBox1.Height-y);
+            int width = rand.Next(0, pictureBox1.Width - x);
+            int height = rand.Next(0, pictureBox1.Height - y);
 
             Color color = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
-            Figura fig = new Figura(tipo,width,height,x,y,color);
+            Figura fig = new Figura(tipo, width, height, x, y, color);
 
             figuras.Add(fig);
             Refresh();
@@ -41,8 +45,9 @@ namespace Paint
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             base.OnPaint(e);
+            pictureBox1.BackColor = colorFondo;
             Graphics g = e.Graphics;
-            Pen lapiz = new Pen(Color.Black, 2);
+            Pen lapiz = new Pen(Color.Black, grosorPincel);
 
             foreach (Figura fig in figuras)
             {
@@ -59,7 +64,7 @@ namespace Paint
                         break;
 
                     case tipoFigura.TRIANGULO:
-                        g.DrawLine(lapiz, new Point(fig.Aleatorio,fig.Y),new Point(fig.X,fig.Y));
+                        g.DrawLine(lapiz, new Point(fig.Aleatorio, fig.Y), new Point(fig.X, fig.Y));
                         g.DrawLine(lapiz, new Point(fig.X, fig.Y), new Point(fig.X + fig.Width, fig.Y + fig.Height));
                         g.DrawLine(lapiz, new Point(fig.Aleatorio, fig.Y), new Point(fig.X + fig.Width, fig.Y + fig.Height));
 
@@ -75,7 +80,40 @@ namespace Paint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            generarFigura(tipoFigura.LINEA);
+            switch (((Button)sender).Tag)
+            {
+
+                case "circulo":
+                    generarFigura(tipoFigura.CIRCULO);
+                    break;
+                case "rectangulo":
+                    generarFigura(tipoFigura.RECTANGULO);
+                    break;
+                case "triangulo":
+                    generarFigura(tipoFigura.TRIANGULO);
+                    break;
+                case "linea":
+                    generarFigura(tipoFigura.LINEA);
+                    break;
+
+            }
         }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            new config(this).ShowDialog();
+            Refresh();
+        }
+
+        private void btnDeshacer_Click(object sender, EventArgs e)
+        {
+            if (figuras.Count > 0)
+            {
+                figuras.RemoveAt(figuras.Count - 1);
+                Refresh();
+            }
+        }
+
+       
     }
 }

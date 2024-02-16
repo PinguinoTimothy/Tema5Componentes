@@ -20,14 +20,7 @@ namespace NuevosComponentes
         public GraficoDeBarras()
         {
             InitializeComponent();
-            valores.Add(1);
-            valores.Add(4);
-            valores.Add(2);
-            valores.Add(3);
-            valores.Add(1);
-            valores.Add(10);
-            valores.Add(14);
-            valores.Add(11);
+         
 
 
 
