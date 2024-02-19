@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbrir = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,27 +63,28 @@
             // menuAbrir
             // 
             this.menuAbrir.Name = "menuAbrir";
-            this.menuAbrir.Size = new System.Drawing.Size(180, 22);
+            this.menuAbrir.Size = new System.Drawing.Size(150, 22);
             this.menuAbrir.Text = "Abrir";
-            this.menuAbrir.Click += new System.EventHandler(this.menuAbrir_Click);
+            this.menuAbrir.Click += new System.EventHandler(this.MenuAbrir_Click);
             // 
             // menuConfiguracion
             // 
             this.menuConfiguracion.Name = "menuConfiguracion";
-            this.menuConfiguracion.Size = new System.Drawing.Size(180, 22);
+            this.menuConfiguracion.Size = new System.Drawing.Size(150, 22);
             this.menuConfiguracion.Text = "Configuracion";
-            this.menuConfiguracion.Click += new System.EventHandler(this.menuConfiguracion_Click);
+            this.menuConfiguracion.Click += new System.EventHandler(this.MenuConfiguracion_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
             // 
             // menuSalir
             // 
             this.menuSalir.Name = "menuSalir";
-            this.menuSalir.Size = new System.Drawing.Size(180, 22);
+            this.menuSalir.Size = new System.Drawing.Size(150, 22);
             this.menuSalir.Text = "Salir";
+            this.menuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
             // 
             // openFileDialog1
             // 
@@ -95,9 +97,10 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Graficos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -1,6 +1,6 @@
 ﻿namespace Graficos
 {
-    partial class config
+    partial class Config
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(config));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Config));
             this.cbColumnas = new System.Windows.Forms.ComboBox();
             this.rbBarras = new System.Windows.Forms.RadioButton();
             this.rbLineas = new System.Windows.Forms.RadioButton();
@@ -63,7 +63,7 @@
             this.rbBarras.TabStop = true;
             this.rbBarras.Text = "Grafico de Barras";
             this.rbBarras.UseVisualStyleBackColor = true;
-            this.rbBarras.CheckedChanged += new System.EventHandler(this.rbLineas_CheckedChanged);
+            this.rbBarras.CheckedChanged += new System.EventHandler(this.RbLineas_CheckedChanged);
             // 
             // rbLineas
             // 
@@ -75,7 +75,7 @@
             this.rbLineas.TabStop = true;
             this.rbLineas.Text = "Grafico de Lineas";
             this.rbLineas.UseVisualStyleBackColor = true;
-            this.rbLineas.CheckedChanged += new System.EventHandler(this.rbLineas_CheckedChanged);
+            this.rbLineas.CheckedChanged += new System.EventHandler(this.RbLineas_CheckedChanged);
             // 
             // label1
             // 
@@ -120,7 +120,7 @@
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // config
             // 

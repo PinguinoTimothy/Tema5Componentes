@@ -33,7 +33,7 @@ namespace Graficos
                         colorLinea = Color.FromArgb(br.ReadInt32());
                         tipoGrafico = br.ReadBoolean() ? ETipoGrafico.BARRAS : ETipoGrafico.LINEA;
                     }
-                    catch (Exception ex)
+                    catch (IOException ex)
                     {
                         Console.WriteLine(ex.Message);
                         throw new FileNotFoundException();
@@ -57,7 +57,7 @@ namespace Graficos
 
         private List<Grafico> graficos = new List<Grafico>();
 
-        private void menuAbrir_Click(object sender, EventArgs e)
+        private void MenuAbrir_Click(object sender, EventArgs e)
         {
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -69,11 +69,12 @@ namespace Graficos
 
                         string text = sr.ReadToEnd();
                         graficos = JsonSerializer.Deserialize<List<Grafico>>(text);
-                        crearGraficos();
+                        CrearGraficos();
                     }
                     catch (Exception ex) when (ex is JsonException || ex is NotSupportedException || ex is ArgumentNullException || ex is IOException)
                     {
-                        MessageBox.Show(ex.Message);
+                        Console.WriteLine(ex.Message);
+                        MessageBox.Show("Error al leer el archivo. Revisa que el formato es correcto");
                         graficos.Clear();
                     }
                 }
@@ -82,19 +83,32 @@ namespace Graficos
             }
         }
 
-        private void crearGraficos()
+
+        public void CrearGraficos()
         {
+            for (int i = Controls.Count-1; i >= 0 ; i--)
+            {
+                if (Controls[i] is GraficoDeBarras || Controls[i] is Label)
+                {
+                    Controls.Remove(Controls[i]);
+                }
+            }
+            
+
             int x = 20;
             int y = 50;
             int cont = 0;
             foreach (Grafico grafico in graficos)
             {
-                Label label = new Label();
-                label.Text = grafico.NombreGrafico;
+               
                 grafico.GraficoDeBarras.Location = new Point(x, y+30);
                 grafico.GraficoDeBarras.ForeColor = colorLinea;
                 grafico.GraficoDeBarras.TipoGrafico = tipoGrafico;
+
+                Label label = new Label();
+                label.Text = grafico.NombreGrafico;
                 label.Location = new Point(x + grafico.GraficoDeBarras.Width/3, y);
+                label.AutoSize = true;
 
                 Controls.Add(grafico.GraficoDeBarras);
                 Controls.Add(label);
@@ -112,9 +126,9 @@ namespace Graficos
             }
         }
 
-        private void menuConfiguracion_Click(object sender, EventArgs e)
+        private void MenuConfiguracion_Click(object sender, EventArgs e)
         {
-            (new config(this)).ShowDialog();
+            (new Config(this)).ShowDialog();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -125,13 +139,18 @@ namespace Graficos
                 {
                     bw.Write(columnas);
                     bw.Write(colorLinea.ToArgb());
-                    bw.Write(tipoGrafico == ETipoGrafico.BARRAS ? true : false);
+                    bw.Write(tipoGrafico == ETipoGrafico.BARRAS);
                 }
-                catch (Exception ex)
+                catch (IOException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
+
+        private void MenuSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

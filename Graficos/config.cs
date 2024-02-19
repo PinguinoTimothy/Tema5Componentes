@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Graficos
 {
-    public partial class config : Form
+    public partial class Config : Form
     {
         Form1 parent;
-        public config(Form1 parent)
+        public Config(Form1 parent)
         {
             InitializeComponent();
             this.parent = parent;
@@ -35,18 +35,23 @@ namespace Graficos
 
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            parent.columnas = int.Parse(cbColumnas.SelectedItem.ToString());
+            if (cbColumnas.SelectedItem != null)
+            {
+                parent.columnas = int.Parse(cbColumnas.SelectedItem.ToString());
+            }
+
             if (lbColor.SelectedItem != null)
             {
             parent.colorLinea = (Color)lbColor.SelectedItem;
             }
             parent.tipoGrafico = rbBarras.Checked ? NuevosComponentes.ETipoGrafico.BARRAS : NuevosComponentes.ETipoGrafico.LINEA;
+            parent.CrearGraficos();
             Close();
         }
 
-        private void rbLineas_CheckedChanged(object sender, EventArgs e)
+        private void RbLineas_CheckedChanged(object sender, EventArgs e)
         {
            
                 lbColor.Enabled = rbLineas.Checked;
